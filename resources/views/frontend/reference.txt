@@ -1,0 +1,33 @@
+ <script>
+    // Ensure only one checkbox can be selected at a time
+    document.addEventListener('DOMContentLoaded', function() {
+      var checkboxes = document.querySelectorAll('.multiple-choice-option'); //yiha
+      //checkbox ko lagi .checkbox-option, mathima
+      checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+          checkboxes.forEach(function(otherCheckbox) {
+            if (otherCheckbox !== checkbox) {
+              otherCheckbox.checked = false;
+            }
+          });
+        });
+      });
+    });
+  </script>
+  ......................................
+ajax
+  // parent.insertBefore(alertDiv, form);  Insert alert above the form
+            form.parentNode.insertBefore(alertDiv, form.nextSibling); //tala dekhauna 
+
+
+            ///////
+ @foreach($formFields as $field)
+  @if($field->type == 'signature')
+    var canvas{{ $field->id }} = document.getElementById('signature-pad-{{ $field->id }}');
+    var signaturePad{{ $field->id }} = new SignaturePad(canvas{{ $field->id }});
+
+    document.getElementById('clear-button-{{ $field->id }}').addEventListener('click', function() {
+      signaturePad{{ $field->id }}.clear();
+    });
+  @endif
+@endforeach
